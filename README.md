@@ -1,4 +1,4 @@
-# Hex to ASCII Extension 
+# Hex Util Extension 
 This is an extension that converts to ASCII regardless of endianness.
 
 ## Features
