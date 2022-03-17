@@ -2,7 +2,7 @@
 	"name": "vsc-hex-util",
 	"publisher": "sbluemin",
 	"displayName": "Hex Util",
-	"description": "vsc-hex-util",
+	"description": "It helps you easily search ASCII string in hex text.",
 	"version": "1.0.0",
 	"repository": "https://github.com/sbluemin/vsc-hex-util",
 	"engines": {
