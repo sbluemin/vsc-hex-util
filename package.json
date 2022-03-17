@@ -1,7 +1,7 @@
 {
-	"name": "vsc-hex2ascii",
+	"name": "vsc-hex-util",
 	"displayName": "",
-	"description": "vsc-hex2ascii",
+	"description": "vsc-hex-util",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.65.0"
