@@ -48,11 +48,15 @@ const vscode = __webpack_require__(1);
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 function activate(context) {
+    context.subscriptions.push(searchCommandDisposable);
     context.subscriptions.push(hoverDisposable);
 }
 exports.activate = activate;
 function hex2ascii(hex) {
     return Buffer.from(hex, 'hex').toString();
+}
+function ascii2hex(str) {
+    return Buffer.from(str).toString('hex');
 }
 function changeEndianness(hex) {
     const result = [];
@@ -63,6 +67,24 @@ function changeEndianness(hex) {
     }
     return result.join('');
 }
+let searchCommandDisposable = vscode.commands.registerCommand('extension.search-ascii', async () => {
+    const searchAscii = await vscode.window.showInputBox({
+        placeHolder: "Enter the ascii string",
+        prompt: "Search Ascii"
+    });
+    if (searchAscii === '') {
+        vscode.window.showErrorMessage('A search ascii is mandatory to execute this action');
+    }
+    if (searchAscii !== undefined) {
+        const toHex = ascii2hex(searchAscii);
+        vscode.commands.executeCommand('workbench.action.findInFiles', {
+            query: toHex
+        });
+        vscode.commands.executeCommand('search.action.openNewEditorToSide', {
+            query: changeEndianness(toHex)
+        });
+    }
+});
 let hoverDisposable = vscode.languages.registerHoverProvider({ scheme: 'file' }, {
     provideHover: async (document, position, token) => {
         let editor = vscode.window.activeTextEditor;
