@@ -1,6 +1,7 @@
 {
 	"name": "vsc-hex-util",
-	"displayName": "",
+	"publisher": "sbluemin",
+	"displayName": "Hex Util",
 	"description": "vsc-hex-util",
 	"version": "1.0.0",
 	"repository": "https://github.com/sbluemin/vsc-hex-util",
